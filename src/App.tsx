@@ -6,7 +6,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="App">
+    <div className="text-red-500">
       <div>
         <a href="https://reactjs.org" target="_blank" rel="noreferrer">
           <img src={reactLogo} className="logo react" alt="React logo" />
