@@ -1,40 +1,48 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import { FC, useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0);
+import clsx from "clsx";
 
+import styles from "./App.module.css";
+import Chat from "./Chat";
+
+export interface AppProps {
+  className?: string;
+}
+
+interface ChatItem {
+  id: number;
+}
+
+const App: FC<AppProps> = ({ className }) => {
+  const [chats, setChats] = useState<ChatItem[]>([{ id: 1 }]);
+
+  const handleCreate = () => {
+    // Create a new chat
+  };
+
+  // CSS MODULES VERSION
   return (
-    <div className="text-red-500">
-      <div>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
+    <div className={clsx(className, styles.app)}>
+      <button onClick={handleCreate}>New Chat</button>
+      <div className={styles.chats}>
+        {chats.map((c) => (
+          <Chat key={c.id} />
+        ))}
       </div>
-      <h1>React + Vite</h1>
-      <h2>On CodeSandbox!</h2>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR.
-        </p>
-
-        <p>
-          Tip: you can use the inspector button next to address bar to click on
-          components in the preview and open the code in the editor!
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   );
-}
+
+  // TAILWIND VERSION
+  // return (
+  //   <div className="relative p-5 w-full h-full">
+  //     <button onClick={handleCreate}>New Chat</button>
+  //     <div className="absolute bottom-5 left-5">
+  //       {chats.map((c) => (
+  //         <Chat key={c.id} />
+  //       ))}
+  //     </div>
+  //   </div>
+  // );
+};
 
 export default App;
