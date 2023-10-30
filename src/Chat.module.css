@@ -1,9 +1,27 @@
 .chat {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   border: 1px solid #d4d4d4;
   border-radius: 8px;
   width: 320px;
   height: 384px;
+  position: relative;
+  justify-content: flex-end;
+}
+
+.chat_control {
+  display: flex;
+  flex-direction: row;
+}
+
+.chat_message {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+}
+
+.chat_messages {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }

@@ -18,6 +18,10 @@ const App: FC<AppProps> = ({ className }) => {
 
   const handleCreate = () => {
     // Create a new chat
+    setChats(prev => {
+      const highestChatId = Math.max(...prev.map(x => x.id));
+      return [...prev, {id: highestChatId + 1}]
+    })
   };
 
   // CSS MODULES VERSION
